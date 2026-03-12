@@ -1,0 +1,23 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+
+# Django
+*.log
+db.sqlite3
+
+# Git
+.git/
+.gitignore
+
+# Environment files
+.env
+.env.*
+
+# OS
+.DS_Store
