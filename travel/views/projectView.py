@@ -44,12 +44,5 @@ class TravelProjectViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['get'], url_path='places/(?P<place_id>[^/.]+)', url_name='project-place-detail')
     def project_place_detail(self, request, pk=None, place_id=None):
         project = self.get_object()
-
-        project_place = ProjectPlace.objects.filter(
-            project=project, place__external_id=place_id
-        ).first()
-
-        if project_place is None:
-            project_place = get_object_or_404(ProjectPlace, project=project, id=place_id)
-
+        project_place = get_object_or_404(ProjectPlace, project=project, place__external_id=place_id)
         return Response(ProjectPlaceSerializer(project_place).data)
